@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Expired Reminder - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#ffb86b",
+                        "surface": "#f8fafb",
+                        "on-secondary-fixed": "#021f29",
+                        "on-surface": "#191c1d",
+                        "surface-bright": "#f8fafb",
+                        "secondary": "#48626e",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "surface-container-high": "#e6e8e9",
+                        "surface-variant": "#e1e3e4",
+                        "on-primary-fixed-variant": "#004c6e",
+                        "status-safe": "#2E7D32",
+                        "background": "#f8fafb",
+                        "tertiary": "#7e4b00",
+                        "secondary-container": "#cbe7f5",
+                        "on-secondary-container": "#4e6874",
+                        "on-secondary-fixed-variant": "#304a55",
+                        "surface-container-low": "#f2f4f5",
+                        "error-container": "#ffdad6",
+                        "on-background": "#191c1d",
+                        "outline": "#707880",
+                        "on-primary-container": "#ebf5ff",
+                        "inverse-primary": "#8aceff",
+                        "primary-fixed-dim": "#8aceff",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#001e2f",
+                        "on-tertiary-container": "#fff1e7",
+                        "tertiary-fixed": "#ffdcbc",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#2c1700",
+                        "status-warning": "#EF6C00",
+                        "surface-container-lowest": "#ffffff",
+                        "border-subtle": "#E0E4E6",
+                        "surface-tint": "#006491",
+                        "secondary-fixed": "#cbe7f5",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#0e76a8",
+                        "primary": "#005c86",
+                        "on-tertiary-fixed-variant": "#683d00",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#c9e6ff",
+                        "on-surface-variant": "#40484f",
+                        "surface-white": "#FFFFFF",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#d8dadb",
+                        "status-danger": "#C62828",
+                        "tertiary-container": "#9f6109",
+                        "secondary-fixed-dim": "#afcbd8",
+                        "outline-variant": "#bfc7d0",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface-container": "#eceeef",
+                        "inverse-on-surface": "#eff1f2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "12px",
+                        "margin-mobile": "16px",
+                        "stack-sm": "4px",
+                        "gutter": "16px",
+                        "stack-lg": "24px",
+                        "base": "8px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Comfortaa"],
+                        "body-sm": ["Comfortaa"],
+                        "headline-lg": ["Comfortaa"],
+                        "title-md": ["Comfortaa"],
+                        "label-lg": ["Comfortaa"],
+                        "display-lg": ["Comfortaa"],
+                        "headline-lg-mobile": ["Comfortaa"],
+                        "body-lg": ["Comfortaa"]
+                    },
+                    "fontSize": {
+                        "label-md": ["11px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "title-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "label-lg": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-sm antialiased min-h-screen pb-24 md:pb-8 pt-20">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface-white dark:bg-inverse-surface shadow-sm flex items-center justify-between px-margin-mobile h-16 w-full max-w-full">
+<div class="flex items-center gap-stack-md">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors active:opacity-80 text-on-surface-variant dark:text-surface-variant">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed-dim tracking-tight">Expired Reminder</h1>
+</div>
+<!-- Desktop Nav Cluster (Hidden on mobile) -->
+<nav class="hidden md:flex items-center gap-stack-lg">
+<a class="font-title-md text-title-md text-primary dark:text-primary-fixed-dim font-bold" href="#">Dashboard</a>
+<a class="font-title-md text-title-md text-on-surface-variant hover:text-primary transition-colors" href="#">Data Barang</a>
+<a class="font-title-md text-title-md text-on-surface-variant hover:text-primary transition-colors" href="#">Expired</a>
+<a class="font-title-md text-title-md text-on-surface-variant hover:text-primary transition-colors" href="#">Account</a>
+</nav>
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors active:opacity-80 text-on-surface-variant dark:text-surface-variant">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto flex flex-col gap-stack-lg">
+<!-- Dashboard Header -->
+<div class="flex flex-col gap-stack-sm mt-stack-md">
+<h2 class="font-display-lg text-display-lg text-on-surface">Dashboard</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Ringkasan status barang hari ini.</p>
+</div>
+<!-- Overview Cards (Bento Grid) -->
+<section class="grid grid-cols-2 md:grid-cols-3 gap-gutter">
+<!-- Exp Hari Ini (Danger) -->
+<div class="col-span-2 md:col-span-1 bg-error-container rounded-xl p-4 flex flex-col gap-stack-md shadow-[0_4px_12px_rgba(186,26,26,0.08)] transition-transform hover:-translate-y-1">
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md text-on-error-container">Exp. Hari Ini</span>
+<span class="material-symbols-outlined text-status-danger filled" data-icon="error">error</span>
+</div>
+<div class="font-display-lg text-display-lg text-on-error-container mt-auto">
+                    14
+                </div>
+</div>
+<!-- Exp 7 Hari Lagi (Warning) -->
+<div class="bg-surface-white rounded-xl p-4 flex flex-col gap-stack-md shadow-[0_4px_12px_rgba(0,0,0,0.02)] border border-border-subtle transition-transform hover:-translate-y-1">
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md text-status-warning">7 Hari Lagi</span>
+<span class="material-symbols-outlined text-status-warning" data-icon="warning">warning</span>
+</div>
+<div class="font-display-lg text-display-lg text-on-surface mt-auto">
+                    32
+                </div>
+</div>
+<!-- Exp 30 Hari Lagi (Safe/Neutral) -->
+<div class="bg-surface-white rounded-xl p-4 flex flex-col gap-stack-md shadow-[0_4px_12px_rgba(0,0,0,0.02)] border border-border-subtle transition-transform hover:-translate-y-1">
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md text-primary">30 Hari Lagi</span>
+<span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+</div>
+<div class="font-display-lg text-display-lg text-on-surface mt-auto">
+                    89
+                </div>
+</div>
+</section>
+<!-- Warning Table / List -->
+<section class="flex flex-col gap-stack-md">
+<div class="flex items-center justify-between">
+<h3 class="font-title-md text-title-md text-on-surface">Peringatan Kedaluwarsa</h3>
+<button class="font-label-lg text-label-lg text-primary hover:bg-surface-container-low px-3 py-1 rounded-full transition-colors">Lihat Semua</button>
+</div>
+<div class="bg-surface-white rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.02)] border border-border-subtle overflow-hidden">
+<div class="flex flex-col">
+<!-- Item 1 (Danger) -->
+<div class="flex items-center gap-stack-md p-4 border-b border-surface-container-low hover:bg-surface-bright transition-colors cursor-pointer">
+<img class="w-[48px] h-[48px] rounded-lg object-cover bg-surface-variant flex-shrink-0" data-alt="A clean, top-down studio shot of a red milk carton sitting on a pure white surface. High key lighting, sharp focus, modern retail product photography style, vibrant red packaging standing out." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvKMs_RmBwzHaiNUIqgudWjfGkf_fyxlxHdlo-SjmpQIJhJ4wUzaeGZN7_5M3zTS79UOB-IBE4mOa63S_DrEcWfFIbd4PPlOBfnWtm1GwU-xNyAXC4yDGRfmPwG_VBQ5_jjBQYbF0EbmNMjlKUTVBAzBS0gdUNqN7YS4KYy0r59k-MkI5m7imAb9KUKpqK1WpL8eFqMj2me9iMn8D4yfoAi4MMG4SRi1MffJVTgB2k34wWYHDTh8X1-flQC1V60pBwlXZtAPL43jo"/>
+<div class="flex-1 flex flex-col gap-stack-sm min-w-0">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface truncate">Susu UHT Full Cream 1L</span>
+<span class="font-label-md text-label-md text-on-surface-variant">8991234567890</span>
+</div>
+<div class="flex flex-col items-end gap-stack-sm">
+<span class="font-label-lg text-label-lg text-status-danger font-bold">Hari ini</span>
+<div class="bg-error-container text-on-error-container font-label-md text-label-md px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="cancel">cancel</span>
+                                Expired
+                            </div>
+</div>
+</div>
+<!-- Item 2 (Warning) -->
+<div class="flex items-center gap-stack-md p-4 border-b border-surface-container-low hover:bg-surface-bright transition-colors cursor-pointer">
+<img class="w-[48px] h-[48px] rounded-lg object-cover bg-surface-variant flex-shrink-0" data-alt="A clean, top-down studio shot of a loaf of sliced bread in clear plastic packaging with an orange label. High key lighting, sharp focus, minimal white background, modern retail style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB432KEwcSjXG13_fqqx_kZ8ps6G7V2GlczS0KAiS0lWaZatUAav2XxVKHDnGE57iTZkZy18k7t2p7B12VuxVRRyawUZVzKPwUF-vnpJd4c1ciLs-3n2YgJbqDjMzSJVGNqNgsSWTpiuiLbzZj9AeSOaYowVFfOGcIp6r0xKDbyYAca_cxhfHy6BuoUbU4syvhcDUKXPsmrRDASID_0LqUraaKaApJ1OBSdNHRK32BGKG5p-WwY8yWigSgLSpJ9yZd25gUg4Hpn1QA"/>
+<div class="flex-1 flex flex-col gap-stack-sm min-w-0">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface truncate">Roti Tawar Kupas</span>
+<span class="font-label-md text-label-md text-on-surface-variant">8999876543210</span>
+</div>
+<div class="flex flex-col items-end gap-stack-sm">
+<span class="font-label-lg text-label-lg text-status-warning font-bold">3 Hari</span>
+<div class="bg-[#FFF3E0] text-status-warning font-label-md text-label-md px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="warning">warning</span>
+                                Segera
+                            </div>
+</div>
+</div>
+<!-- Item 3 (Warning) -->
+<div class="flex items-center gap-stack-md p-4 border-b border-surface-container-low hover:bg-surface-bright transition-colors cursor-pointer">
+<img class="w-[48px] h-[48px] rounded-lg object-cover bg-surface-variant flex-shrink-0" data-alt="A macro studio shot of a generic medication bottle with a blue and white label against a pristine white background. Even soft box lighting, crisp details, conveying health and pharmacy inventory." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQSkMB5yw24t1HBoHwspV1wFon9_4OtD3qru3MrgGp-u2tn4-NX3en3T4DBExc1wnL07nJtRDa10n0nKGNa1mmjLDtCUow-u6FbxEJNOJ6RJT-8hw_7YnVOy19HPj8adDAXqPzI5jn_OAtz2ZQmYXhWWlDnQnKLwA9QC3mCRM7DRn0NVot_-_KPvy1gjGdTjvavIimpFmCqnCaa8ungRSPNhXNefFF9OxfJKhAuFZC7bAcwExKzLGYhfG42oxQqqaIujxZ3SJ78bM"/>
+<div class="flex-1 flex flex-col gap-stack-sm min-w-0">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface truncate">Paracetamol Sirup 60ml</span>
+<span class="font-label-md text-label-md text-on-surface-variant">8995554443332</span>
+</div>
+<div class="flex flex-col items-end gap-stack-sm">
+<span class="font-label-lg text-label-lg text-status-warning font-bold">5 Hari</span>
+<div class="bg-[#FFF3E0] text-status-warning font-label-md text-label-md px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="warning">warning</span>
+                                Segera
+                            </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-white dark:bg-inverse-surface shadow-lg flex justify-around items-center w-full px-2 py-2 pb-safe">
+<!-- Dashboard (Active) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-secondary-fixed rounded-xl px-3 py-1 active:scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined filled" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md mt-1">Dashboard</span>
+</a>
+<!-- Data Barang (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-3 py-1 hover:bg-surface-container dark:hover:bg-on-secondary-fixed-variant rounded-xl active:scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-md text-label-md mt-1">Data Barang</span>
+</a>
+<!-- Expired (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-3 py-1 hover:bg-surface-container dark:hover:bg-on-secondary-fixed-variant rounded-xl active:scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="event_busy">event_busy</span>
+<span class="font-label-md text-label-md mt-1">Expired</span>
+</a>
+<!-- Account (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-3 py-1 hover:bg-surface-container dark:hover:bg-on-secondary-fixed-variant rounded-xl active:scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="font-label-md text-label-md mt-1">Account</span>
+</a>
+</nav>
+<!-- Floating Action Button (FAB) -->
+<button class="fixed bottom-24 md:bottom-8 right-margin-mobile md:right-margin-desktop w-14 h-14 bg-primary text-on-primary rounded-xl shadow-[0_12px_24px_rgba(0,92,134,0.25)] flex items-center justify-center hover:bg-primary-container hover:text-on-primary-container transition-all hover:-translate-y-1 active:scale-95 z-40">
+<span class="material-symbols-outlined text-[28px]" data-icon="add">add</span>
+</button>
+</body></html>

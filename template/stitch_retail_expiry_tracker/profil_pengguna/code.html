@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile Pengguna</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#ffb86b",
+                    "surface": "#f8fafb",
+                    "on-secondary-fixed": "#021f29",
+                    "on-surface": "#191c1d",
+                    "surface-bright": "#f8fafb",
+                    "secondary": "#48626e",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#2e3132",
+                    "surface-container-high": "#e6e8e9",
+                    "surface-variant": "#e1e3e4",
+                    "on-primary-fixed-variant": "#004c6e",
+                    "status-safe": "#2E7D32",
+                    "background": "#f8fafb",
+                    "tertiary": "#7e4b00",
+                    "secondary-container": "#cbe7f5",
+                    "on-secondary-container": "#4e6874",
+                    "on-secondary-fixed-variant": "#304a55",
+                    "surface-container-low": "#f2f4f5",
+                    "error-container": "#ffdad6",
+                    "on-background": "#191c1d",
+                    "outline": "#707880",
+                    "on-primary-container": "#ebf5ff",
+                    "inverse-primary": "#8aceff",
+                    "primary-fixed-dim": "#8aceff",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed": "#001e2f",
+                    "on-tertiary-container": "#fff1e7",
+                    "tertiary-fixed": "#ffdcbc",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#2c1700",
+                    "status-warning": "#EF6C00",
+                    "surface-container-lowest": "#ffffff",
+                    "border-subtle": "#E0E4E6",
+                    "surface-tint": "#006491",
+                    "secondary-fixed": "#cbe7f5",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#0e76a8",
+                    "primary": "#005c86",
+                    "on-tertiary-fixed-variant": "#683d00",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#c9e6ff",
+                    "on-surface-variant": "#40484f",
+                    "surface-white": "#FFFFFF",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#d8dadb",
+                    "status-danger": "#C62828",
+                    "tertiary-container": "#9f6109",
+                    "secondary-fixed-dim": "#afcbd8",
+                    "outline-variant": "#bfc7d0",
+                    "surface-container-highest": "#e1e3e4",
+                    "surface-container": "#eceeef",
+                    "inverse-on-surface": "#eff1f2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "12px",
+                    "margin-mobile": "16px",
+                    "stack-sm": "4px",
+                    "gutter": "16px",
+                    "stack-lg": "24px",
+                    "base": "8px",
+                    "margin-desktop": "32px"
+            },
+            "fontFamily": {
+                    "label-md": [
+                            "Comfortaa"
+                    ],
+                    "body-sm": [
+                            "Comfortaa"
+                    ],
+                    "headline-lg": [
+                            "Comfortaa"
+                    ],
+                    "title-md": [
+                            "Comfortaa"
+                    ],
+                    "label-lg": [
+                            "Comfortaa"
+                    ],
+                    "display-lg": [
+                            "Comfortaa"
+                    ],
+                    "headline-lg-mobile": [
+                            "Comfortaa"
+                    ],
+                    "body-lg": [
+                            "Comfortaa"
+                    ]
+            },
+            "fontSize": {
+                    "label-md": [
+                            "11px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "title-md": [
+                            "18px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-lg": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-lg": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .pb-safe { padding-bottom: max(16px, env(safe-area-inset-bottom)); }
+        body { font-family: 'Comfortaa', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen antialiased flex flex-col pt-16 pb-[88px]">
+<!-- TopAppBar -->
+<header class="bg-surface-white fixed top-0 w-full z-50 shadow-sm flex items-center justify-between px-margin-mobile h-16 max-w-full">
+<button aria-label="Go back" class="text-on-surface-variant hover:bg-surface-container-low transition-colors active:opacity-80 p-2 -ml-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-primary font-headline-lg-mobile text-headline-lg-mobile font-bold">Profile Pengguna</h1>
+<button aria-label="Notifications" class="text-on-surface-variant hover:bg-surface-container-low transition-colors active:opacity-80 p-2 -mr-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-md mx-auto px-margin-mobile py-stack-lg flex flex-col gap-stack-lg">
+<!-- User Profile Section -->
+<section class="flex flex-col items-center pt-stack-md">
+<div class="relative group">
+<div class="w-24 h-24 rounded-full border-4 border-surface-white shadow-sm overflow-hidden bg-surface-container flex items-center justify-center z-10 relative">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a retail inventory worker. The individual is wearing a clean, modern dark blue uniform. The background is a highly blurred, softly lit minimarket aisle with neutral tones. High-key lighting, bright and approachable corporate soft-minimalist style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhwhoJo-dKGE775jpiaFYBYHwVGn9I3jVam2pxHixWKrhbGQxfQD-rG03CB1KnB5SdfiNiRT4Z90PTIPYBSYBTJuS8EnPpl8CUVNcRs4K-b-sqBNAV_43St20c_Grj08Um_QuHirv6VoPoXCtH2lSWZbjYw0GTVRrKLm8_37pydXWnuwrUef62T34OvdyLmlQ8hfdtbX5SZ8Kgnt4WROFrwid0zeMQwzsaIez9kDngwnKBm5uDJt8m5fZBgWM7Q__yrTqq-opIC04"/>
+</div>
+<button aria-label="Edit avatar" class="absolute bottom-0 right-0 w-8 h-8 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-md border-2 border-surface-white z-20 hover:bg-primary-container-high transition-colors active:scale-95">
+<span class="material-symbols-outlined" style="font-size: 16px;">edit</span>
+</button>
+</div>
+<h2 class="mt-stack-md font-title-md text-title-md text-on-surface font-semibold tracking-tight">Staff Minimarket</h2>
+<div class="mt-stack-sm flex items-center gap-2 bg-surface-container-low px-4 py-1.5 rounded-full">
+<span class="w-2 h-2 rounded-full bg-status-safe"></span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Store Operator</span>
+</div>
+</section>
+<!-- Settings Options List (Glass/Card Hybrid Style) -->
+<section class="bg-surface-white rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-border-subtle overflow-hidden flex flex-col">
+<!-- Edit Profile -->
+<button class="flex items-center justify-between w-full p-4 border-b border-border-subtle hover:bg-surface-container-low transition-colors active:bg-surface-container group">
+<div class="flex items-center gap-stack-md">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+<div class="flex flex-col items-start">
+<span class="font-body-lg text-body-lg text-on-surface font-medium">Edit Profile</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Personal details &amp; photo</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+<!-- Notification Settings -->
+<button class="flex items-center justify-between w-full p-4 border-b border-border-subtle hover:bg-surface-container-low transition-colors active:bg-surface-container group">
+<div class="flex items-center gap-stack-md">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed-variant group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+</div>
+<div class="flex flex-col items-start">
+<span class="font-body-lg text-body-lg text-on-surface font-medium">Notification Settings</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Alerts for expired items</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+<!-- App Preferences -->
+<button class="flex items-center justify-between w-full p-4 border-b border-border-subtle hover:bg-surface-container-low transition-colors active:bg-surface-container group">
+<div class="flex items-center gap-stack-md">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+</div>
+<div class="flex flex-col items-start">
+<span class="font-body-lg text-body-lg text-on-surface font-medium">App Preferences</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Theme &amp; language</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+<!-- Logout -->
+<button class="flex items-center justify-between w-full p-4 hover:bg-error-container transition-colors active:bg-error-container group">
+<div class="flex items-center gap-stack-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest group-hover:bg-surface-white flex items-center justify-center text-error transition-colors">
+<span class="material-symbols-outlined text-status-danger" style="font-variation-settings: 'FILL' 1;">logout</span>
+</div>
+<span class="font-body-lg text-body-lg text-status-danger font-bold">Logout</span>
+</div>
+</button>
+</section>
+<!-- Version Info -->
+<div class="flex justify-center mt-stack-md">
+<span class="font-label-md text-label-md text-outline">v1.0.4 (Build 402)</span>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface-white fixed bottom-0 w-full z-50 border-t border-border-subtle shadow-[0_-4px_16px_rgba(0,0,0,0.05)] flex justify-around items-center px-2 py-2 pb-safe md:hidden">
+<!-- Dashboard -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-label-md text-label-md hover:bg-surface-container active:scale-95 transition-transform duration-200 rounded-xl">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span>Dashboard</span>
+</button>
+<!-- Data Barang -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-label-md text-label-md hover:bg-surface-container active:scale-95 transition-transform duration-200 rounded-xl">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">inventory_2</span>
+<span>Data Barang</span>
+</button>
+<!-- Expired -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-label-md text-label-md hover:bg-surface-container active:scale-95 transition-transform duration-200 rounded-xl">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">event_busy</span>
+<span>Expired</span>
+</button>
+<!-- Account (Active) -->
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-3 py-1 font-label-md text-label-md active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+<span>Account</span>
+</button>
+</nav>
+</body></html>

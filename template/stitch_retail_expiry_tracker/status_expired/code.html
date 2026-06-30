@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Expired Tracking</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Comfortaa -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config from Brand Anchors -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#ffb86b",
+                    "surface": "#f8fafb",
+                    "on-secondary-fixed": "#021f29",
+                    "on-surface": "#191c1d",
+                    "surface-bright": "#f8fafb",
+                    "secondary": "#48626e",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#2e3132",
+                    "surface-container-high": "#e6e8e9",
+                    "surface-variant": "#e1e3e4",
+                    "on-primary-fixed-variant": "#004c6e",
+                    "status-safe": "#2E7D32",
+                    "background": "#f8fafb",
+                    "tertiary": "#7e4b00",
+                    "secondary-container": "#cbe7f5",
+                    "on-secondary-container": "#4e6874",
+                    "on-secondary-fixed-variant": "#304a55",
+                    "surface-container-low": "#f2f4f5",
+                    "error-container": "#ffdad6",
+                    "on-background": "#191c1d",
+                    "outline": "#707880",
+                    "on-primary-container": "#ebf5ff",
+                    "inverse-primary": "#8aceff",
+                    "primary-fixed-dim": "#8aceff",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed": "#001e2f",
+                    "on-tertiary-container": "#fff1e7",
+                    "tertiary-fixed": "#ffdcbc",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#2c1700",
+                    "status-warning": "#EF6C00",
+                    "surface-container-lowest": "#ffffff",
+                    "border-subtle": "#E0E4E6",
+                    "surface-tint": "#006491",
+                    "secondary-fixed": "#cbe7f5",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#0e76a8",
+                    "primary": "#005c86",
+                    "on-tertiary-fixed-variant": "#683d00",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#c9e6ff",
+                    "on-surface-variant": "#40484f",
+                    "surface-white": "#FFFFFF",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#d8dadb",
+                    "status-danger": "#C62828",
+                    "tertiary-container": "#9f6109",
+                    "secondary-fixed-dim": "#afcbd8",
+                    "outline-variant": "#bfc7d0",
+                    "surface-container-highest": "#e1e3e4",
+                    "surface-container": "#eceeef",
+                    "inverse-on-surface": "#eff1f2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "12px",
+                    "margin-mobile": "16px",
+                    "stack-sm": "4px",
+                    "gutter": "16px",
+                    "stack-lg": "24px",
+                    "base": "8px",
+                    "margin-desktop": "32px"
+            },
+            "fontFamily": {
+                    "label-md": ["Comfortaa"],
+                    "body-sm": ["Comfortaa"],
+                    "headline-lg": ["Comfortaa"],
+                    "title-md": ["Comfortaa"],
+                    "label-lg": ["Comfortaa"],
+                    "display-lg": ["Comfortaa"],
+                    "headline-lg-mobile": ["Comfortaa"],
+                    "body-lg": ["Comfortaa"]
+            },
+            "fontSize": {
+                    "label-md": ["11px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "label-lg": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-sm flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface-white shadow-sm flex items-center justify-between px-margin-mobile h-16 max-w-full">
+<button class="text-on-surface-variant hover:bg-surface-container-low active:opacity-80 transition-colors p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-bold">Expired Reminder</h1>
+<button class="text-on-surface-variant hover:bg-surface-container-low active:opacity-80 transition-colors p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[88px] pb-[104px] px-margin-mobile md:px-margin-desktop flex flex-col gap-stack-lg max-w-5xl mx-auto w-full">
+<!-- Summary Cards (Bento Grid Style) -->
+<section class="grid grid-cols-2 gap-gutter">
+<div class="bg-surface-white rounded-xl p-4 shadow-[0_4px_12px_rgba(0,0,0,0.02)] border border-border-subtle flex flex-col gap-stack-sm">
+<span class="font-label-md text-label-md text-on-surface-variant">Critical Action</span>
+<div class="flex items-center gap-2">
+<span class="font-display-lg text-display-lg text-status-danger font-bold">12</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant leading-tight">Items<br/>Expired</span>
+</div>
+</div>
+<div class="bg-surface-white rounded-xl p-4 shadow-[0_4px_12px_rgba(0,0,0,0.02)] border border-border-subtle flex flex-col gap-stack-sm">
+<span class="font-label-md text-label-md text-on-surface-variant">Attention Needed</span>
+<div class="flex items-center gap-2">
+<span class="font-display-lg text-display-lg text-status-warning font-bold">8</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant leading-tight">Approaching<br/>Expiry</span>
+</div>
+</div>
+</section>
+<!-- Tracking List -->
+<section class="flex flex-col gap-stack-md">
+<!-- Item: Expired (Danger) -->
+<div class="bg-surface-white rounded-xl p-3 shadow-[0_4px_12px_rgba(0,0,0,0.02)] border border-border-subtle flex items-center gap-gutter active:scale-[0.98] transition-transform cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-surface-container overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A clean, top-down photograph of medical pill blister packs resting on a pristine white surface. The lighting is bright, even, and slightly diffused, typical of a sterile, modern healthcare or corporate environment. The image emphasizes a soft-minimalist aesthetic with high contrast, aligning with a light mode UI design. Small subtle shadows provide a sense of depth, highlighting the clinical efficiency and reliability of inventory management." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNPFkhPmwyQiMjxdTGIL6UchXB3ilM2lNPF0zziG78syome_GRLMM504hlwNHJ5skOkc3rtrnnZ74zJnjPbVfLXkGGzpvei_2mKOiNBwN_lcciggrCEkBKccOrrdQjDgA_0UKQdaRN8Hz9iPzQUqEGkUZfjt1LQwWUMWbw72dH-9RwFu289CbTI3gdJ4XdxdGPfHjf8TKnCsbKJGnVueWnoeome9_ipqrQlE26AVMdXzF6RpPAWX3Z5MKo62Tfb-1cSTJy7mX-Ob8"/>
+</div>
+<div class="flex flex-col flex-grow min-w-0 gap-1">
+<h3 class="font-title-md text-title-md text-on-surface truncate">Paracetamol 500mg</h3>
+<div class="flex flex-col gap-0.5">
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">event</span> Exp: 12 Oct 2023
+                        </span>
+<span class="font-label-md text-label-md text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">alarm</span> Rem: 12 Sep 2023
+                        </span>
+</div>
+</div>
+<div class="shrink-0 flex flex-col items-end">
+<span class="bg-status-danger/10 text-status-danger font-label-lg text-label-lg px-3 py-1 rounded-full whitespace-nowrap">Expired</span>
+</div>
+</div>
+<!-- Item: Approaching (Warning) -->
+<div class="bg-surface-white rounded-xl p-3 shadow-[0_4px_12px_rgba(0,0,0,0.02)] border border-border-subtle flex items-center gap-gutter active:scale-[0.98] transition-transform cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-surface-container overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A high-quality product shot of a small brown glass medicine bottle with a clean, unbranded white label. The bottle sits on an immaculate light grey background, illuminated by soft ambient studio lighting that creates a professional, trustworthy mood. The composition is minimal and perfectly centered, reflecting a modern corporate design language focused on rapid information processing and clarity in a pristine retail or pharmacy setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB6txtnkwM9807BMyKk0wxraqhQC-wBc7qxor0WUZB0mvGL5KhXxVJuhyWVxSTmhVIuZQMLB9m1bIij8LED-E_3aqaJIULqHSLZTlMgzUqxCJl8xKEWjt7Tjx1WvUsQvahqqLfxhwLcIm-UhHPJwivRLXhliVpwjqXgsPv2RnSCfyhN9l8S6oShHLFnWEeccqJU8mmeCttO6YITbu0odujDLo7ofFIkpia-asOh5hN4AZqFlDnc9eETrLwNIzAtrasEo7JhQdzuzI"/>
+</div>
+<div class="flex flex-col flex-grow min-w-0 gap-1">
+<h3 class="font-title-md text-title-md text-on-surface truncate">Amoxicillin Syrup</h3>
+<div class="flex flex-col gap-0.5">
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">event</span> Exp: 05 Nov 2023
+                        </span>
+<span class="font-label-md text-label-md text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">alarm</span> Rem: 05 Oct 2023
+                        </span>
+</div>
+</div>
+<div class="shrink-0 flex flex-col items-end">
+<span class="bg-status-warning/10 text-status-warning font-label-lg text-label-lg px-3 py-1 rounded-full whitespace-nowrap">Mendekati</span>
+</div>
+</div>
+<!-- Item: Safe (Success) -->
+<div class="bg-surface-white rounded-xl p-3 shadow-[0_4px_12px_rgba(0,0,0,0.02)] border border-border-subtle flex items-center gap-gutter active:scale-[0.98] transition-transform cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-surface-container overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A sleek, minimally designed white tube of medical ointment lying flat against a bright, airy background. The lighting is crisp and cool, casting a very soft ambient shadow that adds just enough depth without cluttering the visual field. The overall aesthetic is highly professional, clean, and modern, perfectly suited for a light-mode corporate inventory system where legibility and simplicity are paramount." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkq0p4mUt-r_k25V5o9hkBB5bM0Eq2AuUte5Mga928TeiDBD1GElVcMeokUnzWLNTcNPic7CD4S_zHjLXbccxi2UMGBLvTp7qTLxGPSoyjMUI5gj0TGjfVWdws9RqdTv2f1THE1Z9lE2hQMwLztP96o_Hz3m2tMdngHBKgSWxvvYxX0xJZ5FgTF2N_NV0GZ7vqAMb4Lj_whcB2gNKIuPn0CPClKNuOZj8F0onwySzXO8iMbOAAMJh9BTfUJccYz2mnBgeJt3oHmSY"/>
+</div>
+<div class="flex flex-col flex-grow min-w-0 gap-1">
+<h3 class="font-title-md text-title-md text-on-surface truncate">Hydrocortisone Cream</h3>
+<div class="flex flex-col gap-0.5">
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">event</span> Exp: 20 Dec 2024
+                        </span>
+<span class="font-label-md text-label-md text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">alarm</span> Rem: 20 Nov 2024
+                        </span>
+</div>
+</div>
+<div class="shrink-0 flex flex-col items-end">
+<span class="bg-status-safe/10 text-status-safe font-label-lg text-label-lg px-3 py-1 rounded-full whitespace-nowrap">Aman</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Hidden on desktop via md:hidden) -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-white shadow-lg flex justify-around items-center px-2 py-2 pb-safe md:hidden">
+<!-- Tab: Dashboard -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-container active:scale-95 transition-transform duration-200 rounded-xl gap-1">
+<span class="material-symbols-outlined text-[24px]">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</button>
+<!-- Tab: Data Barang -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-container active:scale-95 transition-transform duration-200 rounded-xl gap-1">
+<span class="material-symbols-outlined text-[24px]">inventory_2</span>
+<span class="font-label-md text-label-md">Data Barang</span>
+</button>
+<!-- Tab: Expired (ACTIVE) -->
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-3 py-1 active:scale-95 transition-transform duration-200 gap-1">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">event_busy</span>
+<span class="font-label-md text-label-md">Expired</span>
+</button>
+<!-- Tab: Account -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-container active:scale-95 transition-transform duration-200 rounded-xl gap-1">
+<span class="material-symbols-outlined text-[24px]">account_circle</span>
+<span class="font-label-md text-label-md">Account</span>
+</button>
+</nav>
+</body></html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Data Barang</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#ffb86b",
+                        "surface": "#f8fafb",
+                        "on-secondary-fixed": "#021f29",
+                        "on-surface": "#191c1d",
+                        "surface-bright": "#f8fafb",
+                        "secondary": "#48626e",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "surface-container-high": "#e6e8e9",
+                        "surface-variant": "#e1e3e4",
+                        "on-primary-fixed-variant": "#004c6e",
+                        "status-safe": "#2E7D32",
+                        "background": "#f8fafb",
+                        "tertiary": "#7e4b00",
+                        "secondary-container": "#cbe7f5",
+                        "on-secondary-container": "#4e6874",
+                        "on-secondary-fixed-variant": "#304a55",
+                        "surface-container-low": "#f2f4f5",
+                        "error-container": "#ffdad6",
+                        "on-background": "#191c1d",
+                        "outline": "#707880",
+                        "on-primary-container": "#ebf5ff",
+                        "inverse-primary": "#8aceff",
+                        "primary-fixed-dim": "#8aceff",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#001e2f",
+                        "on-tertiary-container": "#fff1e7",
+                        "tertiary-fixed": "#ffdcbc",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#2c1700",
+                        "status-warning": "#EF6C00",
+                        "surface-container-lowest": "#ffffff",
+                        "border-subtle": "#E0E4E6",
+                        "surface-tint": "#006491",
+                        "secondary-fixed": "#cbe7f5",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#0e76a8",
+                        "primary": "#005c86",
+                        "on-tertiary-fixed-variant": "#683d00",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#c9e6ff",
+                        "on-surface-variant": "#40484f",
+                        "surface-white": "#FFFFFF",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#d8dadb",
+                        "status-danger": "#C62828",
+                        "tertiary-container": "#9f6109",
+                        "secondary-fixed-dim": "#afcbd8",
+                        "outline-variant": "#bfc7d0",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface-container": "#eceeef",
+                        "inverse-on-surface": "#eff1f2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "12px",
+                        "margin-mobile": "16px",
+                        "stack-sm": "4px",
+                        "gutter": "16px",
+                        "stack-lg": "24px",
+                        "base": "8px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Comfortaa"],
+                        "body-sm": ["Comfortaa"],
+                        "headline-lg": ["Comfortaa"],
+                        "title-md": ["Comfortaa"],
+                        "label-lg": ["Comfortaa"],
+                        "display-lg": ["Comfortaa"],
+                        "headline-lg-mobile": ["Comfortaa"],
+                        "body-lg": ["Comfortaa"]
+                    },
+                    "fontSize": {
+                        "label-md": ["11px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "title-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "label-lg": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-[80px]">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface-white border-b border-border-subtle shadow-sm flex items-center justify-between px-margin-mobile h-16 max-w-full">
+<button class="text-primary hover:bg-surface-container-low transition-colors active:opacity-80 p-2 rounded-full">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Data Barang</h1>
+<button class="text-primary hover:bg-surface-container-low transition-colors active:opacity-80 p-2 rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<!-- Main Canvas -->
+<main class="pt-20 px-margin-mobile md:px-margin-desktop w-full max-w-7xl mx-auto">
+<!-- Search Bar -->
+<div class="mb-stack-lg relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-12 pr-4 py-3 rounded-full border border-border-subtle bg-surface-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-body-lg text-body-lg text-on-surface shadow-[0_2px_4px_rgba(0,0,0,0.02)] transition-all" placeholder="Search inventory..." type="text"/>
+</div>
+<!-- Inventory Bento Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter pb-stack-lg">
+<!-- Item Card 1 -->
+<div class="glass-card rounded-xl p-4 flex flex-col gap-stack-md shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] transition-shadow cursor-pointer group">
+<div class="w-full h-32 rounded-lg bg-surface-container-low overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A clean, high-resolution product shot of a modern, sleek water bottle. The bottle is a matte dark blue, positioned perfectly centered against a pristine white background. The lighting is soft and studio-quality, highlighting the smooth contours and premium finish. The aesthetic is minimalist and corporate, fitting a modern retail inventory application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkRJNN39dpJSkMdG9JMSoMXHogwvwk_H9nAkx7wO98JD2fI42tQN2Bs48JlPXsjHJfh5IHYuDlD0IiKYz_115BF62ZQFT4uBrkg-snsqQ6kimdKHDg2ppSOqZHGhFwkuDH2-oaFEeWGnVm5SFn9C_y1aCKgs1G2gl4zXlbj6aYhH2xjWgseqAmXqpV5YQn2NMxYr1ruz3B_LPcWviyJpJZdOrdCbHLt6505VgCxedkY32DiyYbIOWVyyfD-2sCETgkueQ3M0KO2PY"/>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface mb-stack-sm">Aqua Flask 500ml</h3>
+<div class="flex items-center text-on-surface-variant font-body-sm text-body-sm gap-2">
+<span class="material-symbols-outlined text-[16px]">barcode</span>
+<span>8990123456789</span>
+</div>
+</div>
+<div class="mt-auto flex justify-between items-center pt-stack-sm border-t border-border-subtle">
+<span class="px-3 py-1 rounded-full bg-status-safe/10 text-status-safe font-label-md text-label-md">In Stock: 142</span>
+</div>
+</div>
+<!-- Item Card 2 -->
+<div class="glass-card rounded-xl p-4 flex flex-col gap-stack-md shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] transition-shadow cursor-pointer group">
+<div class="w-full h-32 rounded-lg bg-surface-container-low overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A high-quality product photography shot of a sleek, minimalist desk organizer. The organizer is made of matte grey plastic with multiple compartments. It sits centered on an immaculate, bright white surface. The lighting is bright, even, and casts soft shadows, creating a professional, light-mode corporate aesthetic for a modern retail system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEMVZdZL-CZmslu7dnjfsquxutg4uJNndgCrbukrLDU0X-nvNfh8jhnqy4Jab73UXESwr5Fg6dgxLlMzG0eCOxctPjedf3o0Kq0jFqJ9TP8x_5u2jYFXgmYqTyt2wNROhea_DKoTtC1iRX0SdIn0eNcslZDAB7jwbc1h6PHamP7YSHCB6cxJHAVr-CdzNoD-D11-ugsjPKlFMwYCccCdAzijXM7aaTIu38ZddR9ZUqi9DhC21uHiTOiLq-KQpgpxH9B5Q7sZFZCjM"/>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface mb-stack-sm">Desk Organizer Pro</h3>
+<div class="flex items-center text-on-surface-variant font-body-sm text-body-sm gap-2">
+<span class="material-symbols-outlined text-[16px]">barcode</span>
+<span>8990123456790</span>
+</div>
+</div>
+<div class="mt-auto flex justify-between items-center pt-stack-sm border-t border-border-subtle">
+<span class="px-3 py-1 rounded-full bg-status-warning/10 text-status-warning font-label-md text-label-md">Low Stock: 12</span>
+</div>
+</div>
+<!-- Item Card 3 -->
+<div class="glass-card rounded-xl p-4 flex flex-col gap-stack-md shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] transition-shadow cursor-pointer group">
+<div class="w-full h-32 rounded-lg bg-surface-container-low overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A clean, studio-lit photograph of a premium coffee bean bag. The bag is matte black with a subtle, elegant label. It is placed dead-center against a pure white, seamlessly lit background. The overall style is modern, professional, and minimalist, perfectly aligned with a high-end corporate retail application interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDK72Be1BqnOe1CMZ15nIbbM8NwPA97v33KL1HHQivOhsVxHX4gxruFDVVF3wzdxvIC_ncKDgtfqF9i7F-4DlH9vQVd0SkpvXyeNlSXgrjBr7hmYacLqGUsMjdQG77kq7vKxsSmA4yWoM27Ve9fJ4eOWgf0v6a9GjEL05rdMgjTCo6zMsT_nGOTfxFOq67ljyVtCRTuwyMLDtmuOqQcTWsuEzHNQzY2vvnVfXj35sqFL4Nqboq-TtW81bw6_r3U1myERkfJmKwP9-U"/>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface mb-stack-sm">Premium Arabica Beans</h3>
+<div class="flex items-center text-on-surface-variant font-body-sm text-body-sm gap-2">
+<span class="material-symbols-outlined text-[16px]">barcode</span>
+<span>8990123456791</span>
+</div>
+</div>
+<div class="mt-auto flex justify-between items-center pt-stack-sm border-t border-border-subtle">
+<span class="px-3 py-1 rounded-full bg-status-safe/10 text-status-safe font-label-md text-label-md">In Stock: 85</span>
+</div>
+</div>
+<!-- Item Card 4 -->
+<div class="glass-card rounded-xl p-4 flex flex-col gap-stack-md shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] transition-shadow cursor-pointer group">
+<div class="w-full h-32 rounded-lg bg-surface-container-low overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A pristine product shot of a small, modern electronic gadget, possibly a wireless charger or small speaker. It is crisp white with subtle silver accents, resting on a stark white background. Soft, diffused lighting enhances its curves, reflecting a clean, corporate, light-mode minimalist design aesthetic typical of high-end retail software." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCzHZ33725xceglMqWTMo8kB3hHLMzGreTFn90_X7XDsYXKNr6vKh_LvBlXNV33Am87lOCuyJ7x_fQvfcHqLB-l2m1Nn2ODL7dVftg8qiGiiECuzvrsD1NB3ZrTxPcA-gXeZklXk_Cx3Xz9XAA9F3n4XCEvuDAJyN0UI4jtjRnx9vbtqtVMaeb53b5x-_0st-xYxsQean88LuhwBqVZ2fZDxlOJDozI2boqw5iNfDjneiMC7wRUMCWzYZEpOEryedFz_WzEcBKMRo"/>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface mb-stack-sm">Wireless Charger Pad</h3>
+<div class="flex items-center text-on-surface-variant font-body-sm text-body-sm gap-2">
+<span class="material-symbols-outlined text-[16px]">barcode</span>
+<span>8990123456792</span>
+</div>
+</div>
+<div class="mt-auto flex justify-between items-center pt-stack-sm border-t border-border-subtle">
+<span class="px-3 py-1 rounded-full bg-status-danger/10 text-status-danger font-label-md text-label-md">Out of Stock</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-[88px] right-6 w-14 h-14 bg-primary text-on-primary rounded-2xl flex items-center justify-center shadow-[0_12px_24px_rgba(0,92,134,0.3)] hover:shadow-[0_16px_32px_rgba(0,92,134,0.4)] hover:-translate-y-1 transition-all z-40">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+<!-- Bottom Nav Bar -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-white border-t border-border-subtle shadow-lg flex justify-around items-center px-2 py-2 pb-safe">
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-container active:scale-95 transition-transform duration-200 rounded-xl">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md mt-1">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-3 py-1 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-label-md text-label-md mt-1">Data Barang</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-container active:scale-95 transition-transform duration-200 rounded-xl">
+<span class="material-symbols-outlined">event_busy</span>
+<span class="font-label-md text-label-md mt-1">Expired</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-container active:scale-95 transition-transform duration-200 rounded-xl">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-md text-label-md mt-1">Account</span>
+</button>
+</nav>
+</body></html>

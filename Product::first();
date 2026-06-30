@@ -1,0 +1,16 @@
+[90m= [39m[34;4mApp\Models\User[39;24m {#8288
+    [34mid[39m: [35m1[39m,
+    [34mname[39m: [32m"[39m[32mAdministrator[39m[32m"[39m,
+    [34memail[39m: [32m"[39m[32madmin@example.com[39m[32m"[39m,
+    #[33mpassword[39m: [32m"[39m\$[32m2y[39m\$[32m12[39m\$[32mZFclh5.wysTsN7crHepqVe2aBF3gC1wYy0DziXntJMT0vs6oRRCd.[39m[32m"[39m,
+    [34mgoogle_id[39m: [36mnull[39m,
+    [34mavatar[39m: [36mnull[39m,
+    [34mrole[39m: [32m"[39m[32madmin[39m[32m"[39m,
+    [34mis_active[39m: [35m1[39m,
+    [34mtelegram_user_id[39m: [36mnull[39m,
+    [34mlast_login_at[39m: [32m"[39m[32m2026-06-26 16:40:39[39m[32m"[39m,
+    [34memail_verified_at[39m: [32m"[39m[32m2026-06-23 13:35:49[39m[32m"[39m,
+    #[33mremember_token[39m: [36mnull[39m,
+    [34mcreated_at[39m: [32m"[39m[32m2026-06-23 13:35:50[39m[32m"[39m,
+    [34mupdated_at[39m: [32m"[39m[32m2026-06-26 16:40:39[39m[32m"[39m,
+  }
