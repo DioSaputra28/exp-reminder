@@ -22,18 +22,46 @@
     @endif
 
     {{-- Stats --}}
-    <section class="grid grid-cols-3 gap-gutter">
-        <div class="bg-surface-white rounded-xl p-4 shadow-[0_4px_12px_rgba(0,0,0,0.02)] border border-border-subtle flex flex-col items-center gap-stack-sm">
+    <section class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-gutter">
+        <div class="bg-surface-white rounded-xl p-4 shadow-[0_2px_8px_rgba(0,0,0,0.03)] border border-border-subtle flex flex-col gap-1">
+            <span class="text-label-md text-on-surface-variant">Total Users</span>
             <span class="text-display-lg font-bold text-on-surface">{{ $stats['total'] }}</span>
-            <span class="text-label-md text-on-surface-variant text-center">Total User</span>
         </div>
-        <div class="bg-surface-white rounded-xl p-4 shadow-[0_4px_12px_rgba(0,0,0,0.02)] border border-border-subtle flex flex-col items-center gap-stack-sm">
-            <span class="text-display-lg font-bold text-status-safe">{{ $stats['active'] }}</span>
-            <span class="text-label-md text-on-surface-variant text-center">Aktif 30h</span>
+        <div class="bg-surface-white rounded-xl p-4 shadow-[0_2px_8px_rgba(0,0,0,0.03)] border border-border-subtle flex flex-col gap-1">
+            <span class="text-label-md text-on-surface-variant">Baru (7hr)</span>
+            <span class="text-display-lg font-bold text-primary">{{ $stats['new_7d'] }}</span>
         </div>
-        <div class="bg-surface-white rounded-xl p-4 shadow-[0_4px_12px_rgba(0,0,0,0.02)] border border-border-subtle flex flex-col items-center gap-stack-sm">
-            <span class="text-display-lg font-bold text-primary">{{ $stats['telegram_linked'] }}</span>
-            <span class="text-label-md text-on-surface-variant text-center">Telegram</span>
+        <div class="bg-surface-white rounded-xl p-4 shadow-[0_2px_8px_rgba(0,0,0,0.03)] border border-border-subtle flex flex-col gap-1">
+            <span class="text-label-md text-on-surface-variant">Baru (30hr)</span>
+            <span class="text-display-lg font-bold text-primary">{{ $stats['new_30d'] }}</span>
+        </div>
+        <div class="bg-surface-white rounded-xl p-4 shadow-[0_2px_8px_rgba(0,0,0,0.03)] border border-border-subtle flex flex-col gap-1">
+            <span class="text-label-md text-on-surface-variant">Aktif Hari Ini</span>
+            <span class="text-display-lg font-bold text-status-safe">{{ $stats['active_today'] }}</span>
+        </div>
+        <div class="bg-surface-white rounded-xl p-4 shadow-[0_2px_8px_rgba(0,0,0,0.03)] border border-border-subtle flex flex-col gap-1">
+            <span class="text-label-md text-on-surface-variant">Aktif (7hr)</span>
+            <span class="text-display-lg font-bold text-status-safe">{{ $stats['active_7d'] }}</span>
+        </div>
+        <div class="bg-surface-white rounded-xl p-4 shadow-[0_2px_8px_rgba(0,0,0,0.03)] border border-border-subtle flex flex-col gap-1">
+            <span class="text-label-md text-on-surface-variant">Aktif (30hr)</span>
+            <span class="text-display-lg font-bold text-status-safe">{{ $stats['active_30d'] }}</span>
+        </div>
+        <div class="bg-surface-white rounded-xl p-4 shadow-[0_2px_8px_rgba(0,0,0,0.03)] border border-border-subtle flex flex-col gap-1">
+            <span class="text-label-md text-on-surface-variant">Total Item</span>
+            <span class="text-display-lg font-bold text-on-surface">{{ $stats['total_items'] }}</span>
+        </div>
+        <div class="bg-surface-white rounded-xl p-4 shadow-[0_2px_8px_rgba(0,0,0,0.03)] border border-border-subtle flex flex-col gap-1">
+            <span class="text-label-md text-on-surface-variant">Rata Item/User</span>
+            <span class="text-display-lg font-bold text-on-surface">{{ $stats['avg_items_per_user'] }}</span>
+        </div>
+        <div class="bg-surface-white rounded-xl p-4 shadow-[0_2px_8px_rgba(0,0,0,0.03)] border border-border-subtle flex flex-col gap-1">
+            <span class="text-label-md text-on-surface-variant">Telegram Linked</span>
+            <span class="text-display-lg font-bold text-[#2AABEE]">{{ $stats['telegram_linked'] }}</span>
+        </div>
+        <div class="bg-surface-white rounded-xl p-4 shadow-[0_2px_8px_rgba(0,0,0,0.03)] border border-border-subtle flex flex-col gap-1">
+            <span class="text-label-md text-on-surface-variant">Tanpa Telegram</span>
+            <span class="text-display-lg font-bold text-status-danger">{{ $stats['telegram_missing'] }}</span>
         </div>
     </section>
 

@@ -106,8 +106,20 @@
         </div>
     </form>
 
-    {{-- Admin: Product Requests Link --}}
+    {{-- Admin Links --}}
     @if($user->isAdmin())
+    <a href="{{ route('admin.users.index') }}" class="bg-surface-white rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-border-subtle overflow-hidden flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+        <div class="flex items-center gap-stack-md">
+            <div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center group-hover:scale-105 transition-transform">
+                <x-heroicon-o-users class="w-5 h-5 text-on-primary-fixed"/>
+            </div>
+            <div class="flex flex-col">
+                <span class="text-body-lg font-medium text-on-surface">Kelola User</span>
+                <span class="text-label-md text-on-surface-variant">Statistik &amp; manage pengguna</span>
+            </div>
+        </div>
+        <x-heroicon-o-chevron-right class="w-5 h-5 text-outline group-hover:translate-x-1 transition-transform"/>
+    </a>
     <a href="{{ route('admin.product-requests.index') }}" class="bg-surface-white rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-border-subtle overflow-hidden flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
         <div class="flex items-center gap-stack-md">
             <div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center group-hover:scale-105 transition-transform">
