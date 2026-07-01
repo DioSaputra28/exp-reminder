@@ -24,8 +24,8 @@
                 <x-heroicon-o-archive-box class="w-6 h-6 text-on-surface-variant"/>
             @endif
         </div>
-        <div class="flex-1 min-w-0">
-            <h3 class="text-title-md font-semibold text-on-surface truncate">{{ $trackedItem->product->name }}</h3>
+        <div class="flex-1 min-w-0 break-words">
+            <h3 class="text-sm md:text-title-md font-semibold text-on-surface">{{ $trackedItem->product->name }}</h3>
             <p class="text-label-md text-on-surface-variant">{{ $trackedItem->product->barcode }}</p>
         </div>
         <x-status-badge :status="$trackedItem->expiryStatus()" />
