@@ -59,7 +59,8 @@ class TrackedItemController extends Controller
     {
         $validated = $request->validate([
             'product_id' => ['required', 'exists:products,id'],
-            'expiry_date' => ['required', 'date', 'after:today'],
+            'expiry_date' => ['required', 'date', 'after_or_equal:today'],
+            'quantity' => ['required', 'integer', 'min:1'],
             'remind_preset' => ['nullable', 'string'],
             'remind_at_custom' => ['nullable', 'date', 'after_or_equal:today'],
         ]);
@@ -99,6 +100,7 @@ class TrackedItemController extends Controller
             'user_id' => $user->id,
             'product_id' => $validated['product_id'],
             'expiry_date' => $validated['expiry_date'],
+            'quantity' => $validated['quantity'],
             'remind_at' => $remindAt,
             'reminder_status' => ReminderStatus::Pending,
         ]);
@@ -128,7 +130,8 @@ class TrackedItemController extends Controller
         abort_unless($trackedItem->user_id === $request->user()->id, 403);
 
         $validated = $request->validate([
-            'expiry_date' => ['required', 'date', 'after:today'],
+            'expiry_date' => ['required', 'date', 'after_or_equal:today'],
+            'quantity' => ['required', 'integer', 'min:1'],
             'remind_preset' => ['nullable', 'string'],
             'remind_at_custom' => ['nullable', 'date', 'after_or_equal:today'],
         ]);
@@ -164,6 +167,7 @@ class TrackedItemController extends Controller
 
         $trackedItem->update([
             'expiry_date' => $validated['expiry_date'],
+            'quantity' => $validated['quantity'],
             'remind_at' => $remindAt,
             'reminder_status' => $reminderStatus,
             'reminder_sent_at' => $reminderStatus === ReminderStatus::Pending ? null : $trackedItem->reminder_sent_at,

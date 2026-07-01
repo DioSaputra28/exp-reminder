@@ -23,6 +23,7 @@ class TrackedItem extends Model
         'user_id',
         'product_id',
         'expiry_date',
+        'quantity',
         'remind_at',
         'reminder_status',
         'reminder_sent_at',
@@ -37,6 +38,7 @@ class TrackedItem extends Model
     {
         return [
             'expiry_date' => 'date',
+            'quantity' => 'integer',
             'remind_at' => 'date',
             'reminder_status' => ReminderStatus::class,
             'reminder_sent_at' => 'datetime',

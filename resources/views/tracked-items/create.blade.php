@@ -71,35 +71,53 @@
             </div>
         @endif
 
-        {{-- Expiry Date --}}
-        <div class="flex flex-col gap-stack-sm">
-            <label for="expiry_date" class="text-label-lg text-on-surface-variant uppercase tracking-wider">Tanggal Expired *</label>
-            <input
-                type="date"
-                id="expiry_date"
-                name="expiry_date"
-                value="{{ old('expiry_date') }}"
-                required
-                min="{{ now()->addDay()->format('Y-m-d') }}"
-                class="w-full px-4 py-3 rounded-xl border border-border-subtle bg-surface-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-body-lg text-on-surface transition-all"
-            />
-            @error('expiry_date')
-                <span class="text-label-md text-error">{{ $message }}</span>
-            @enderror
+        {{-- Expiry Date + Quantity (side by side) --}}
+        <div class="grid grid-cols-2 gap-stack-md">
+            <div class="flex flex-col gap-stack-sm">
+                <label for="expiry_date" class="text-label-lg text-on-surface-variant uppercase tracking-wider">Expired *</label>
+                <input
+                    type="date"
+                    id="expiry_date"
+                    name="expiry_date"
+                    value="{{ old('expiry_date') }}"
+                    required
+                    min="{{ now()->format('Y-m-d') }}"
+                    class="w-full px-3 py-2.5 rounded-xl border border-border-subtle bg-surface-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-body-sm text-on-surface transition-all"
+                />
+                @error('expiry_date')
+                    <span class="text-label-md text-error">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="flex flex-col gap-stack-sm">
+                <label for="quantity" class="text-label-lg text-on-surface-variant uppercase tracking-wider">Jumlah *</label>
+                <input
+                    type="number"
+                    id="quantity"
+                    name="quantity"
+                    value="{{ old('quantity', 1) }}"
+                    required
+                    min="1"
+                    class="w-full px-3 py-2.5 rounded-xl border border-border-subtle bg-surface-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-body-sm text-on-surface transition-all"
+                    placeholder="1"
+                />
+                @error('quantity')
+                    <span class="text-label-md text-error">{{ $message }}</span>
+                @enderror
+            </div>
         </div>
 
         {{-- Reminder Preset --}}
         <div class="flex flex-col gap-stack-md">
             <label class="text-label-lg text-on-surface-variant uppercase tracking-wider">Ingatkan Sebelum</label>
-            <div class="grid grid-cols-3 sm:grid-cols-4 gap-2">
+            <div class="grid grid-cols-4 gap-1.5">
                 @php
                     $presets = [
-                        'H-7' => '7 Hari',
-                        'H-14' => '14 Hari',
-                        'H-30' => '30 Hari',
-                        'B-1' => '1 Bulan',
-                        'B-2' => '2 Bulan',
-                        'B-3' => '3 Bulan',
+                        'H-7' => '7H',
+                        'H-14' => '14H',
+                        'H-30' => '30H',
+                        'B-1' => '1Bln',
+                        'B-2' => '2Bln',
+                        'B-3' => '3Bln',
                         'custom' => 'Custom',
                         'none' => 'Tidak',
                     ];
@@ -107,7 +125,7 @@
                 @foreach($presets as $value => $label)
                     <label class="cursor-pointer">
                         <input type="radio" name="remind_preset" value="{{ $value }}" class="peer hidden" {{ old('remind_preset', 'H-7') === $value ? 'checked' : '' }}/>
-                        <div class="px-3 py-2 rounded-xl border border-border-subtle text-center text-body-sm text-on-surface-variant peer-checked:bg-primary peer-checked:text-on-primary peer-checked:border-primary transition-all hover:bg-surface-container">
+                        <div class="px-1 py-2 rounded-xl border border-border-subtle text-center text-label-md text-on-surface-variant peer-checked:bg-primary peer-checked:text-on-primary peer-checked:border-primary transition-all hover:bg-surface-container leading-tight">
                             {{ $label }}
                         </div>
                     </label>

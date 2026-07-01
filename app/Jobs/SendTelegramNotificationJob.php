@@ -59,8 +59,9 @@ class SendTelegramNotificationJob implements ShouldQueue
 
         $product = $trackedItem->product;
         $daysLeft = now()->startOfDay()->diffInDays($trackedItem->expiry_date, false);
+        $quantity = $trackedItem->quantity;
 
-        $message = $this->composeMessage($product->name, $trackedItem->expiry_date->format('d M Y'), $daysLeft);
+        $message = $this->composeMessage($product->name, $trackedItem->expiry_date->format('d M Y'), $daysLeft, $quantity);
 
         try {
             $success = $telegram->sendMessage($user->telegram_user_id, $message);
@@ -102,17 +103,19 @@ class SendTelegramNotificationJob implements ShouldQueue
     /**
      * Compose the notification message.
      */
-    private function composeMessage(string $productName, string $expiryDate, int $daysLeft): string
+    private function composeMessage(string $productName, string $expiryDate, int $daysLeft, int $quantity = 1): string
     {
+        $qtyText = $quantity > 1 ? " ({$quantity} pcs)" : '';
+
         if ($daysLeft <= 0) {
             return "⚠️ <b>Expired Alert!</b>\n\n"
-                ."Produk: <b>{$productName}</b>\n"
+                ."Produk: <b>{$productName}</b>{$qtyText}\n"
                 ."Tanggal Expired: {$expiryDate}\n\n"
                 .'⛔ Barang ini sudah melewati tanggal expired. Segera tarik dari rak!';
         }
 
         return "⚠️ <b>Reminder Expired</b>\n\n"
-            ."Produk: <b>{$productName}</b>\n"
+            ."Produk: <b>{$productName}</b>{$qtyText}\n"
             ."Tanggal Expired: {$expiryDate}\n"
             ."Sisa Waktu: <b>{$daysLeft} hari lagi</b>\n\n"
             .'📋 Segera cek stok dan persiapkan penggantian.';

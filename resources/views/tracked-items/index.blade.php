@@ -83,7 +83,7 @@
                     <div class="flex flex-col mt-0.5 gap-0">
                         <span class="{{ $textMuted }} text-label-md flex items-center gap-1">
                             <x-heroicon-m-calendar-days class="w-3 h-3 shrink-0"/>
-                            {{ $item->expiry_date->format('d M Y') }}
+                            {{ $item->expiry_date->format('d M Y') }} · {{ $item->quantity }} pcs
                         </span>
                         @if($item->remind_at)
                             <span class="{{ $textMuted }} text-label-md flex items-center gap-1">
@@ -95,8 +95,7 @@
                 </div>
 
                 {{-- Actions only --}}
-                <div class="shrink-0 flex items-center gap-0.5">
-                    <a href="{{ route('tracked-items.edit', $item) }}" class="text-primary p-1.5 rounded-full hover:bg-black/5 transition-colors">
+                <div class="shrink-0 flex items-center gap-0.5">                    <a href="{{ route('tracked-items.edit', $item) }}" class="text-primary p-1.5 rounded-full hover:bg-black/5 transition-colors">
                         <x-heroicon-o-pencil class="w-4 h-4"/>
                     </a>
                     <form method="POST" action="{{ route('tracked-items.destroy', $item) }}" onsubmit="return confirm('Hapus tracking ini?')">
