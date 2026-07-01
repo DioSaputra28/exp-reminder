@@ -85,6 +85,10 @@
                             <x-heroicon-m-calendar-days class="w-3 h-3 shrink-0"/>
                             {{ $item->expiry_date->format('d M Y') }} · {{ $item->quantity }} pcs
                         </span>
+                        <span class="{{ $textMuted }} text-label-md flex items-center gap-1">
+                            <x-heroicon-m-map-pin class="w-3 h-3 shrink-0"/>
+                            {{ $item->rack_name ?? '-' }} · {{ $item->shelf ?? '-' }} · {{ $item->sequence ?? '-' }}
+                        </span>
                         @if($item->remind_at)
                             <span class="{{ $textMuted }} text-label-md flex items-center gap-1">
                                 <x-heroicon-m-bell class="w-3 h-3 shrink-0"/>

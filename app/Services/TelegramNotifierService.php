@@ -104,6 +104,54 @@ class TelegramNotifierService
     }
 
     /**
+     * Send a photo with an HTML caption to a Telegram user.
+     */
+    public function sendPhoto(string $telegramUserId, string $photoUrl, string $caption): bool
+    {
+        if (empty($this->botToken)) {
+            Log::error('TelegramNotifierService: Bot token is not configured.');
+
+            return false;
+        }
+
+        try {
+            $response = Http::timeout(10)->post("{$this->apiBaseUrl}/sendPhoto", [
+                'chat_id' => $telegramUserId,
+                'photo' => $photoUrl,
+                'caption' => $caption,
+                'parse_mode' => 'HTML',
+            ]);
+
+            if ($response->successful() && $response->json('ok')) {
+                return true;
+            }
+
+            $statusCode = $response->status();
+            $description = $response->json('description', 'Unknown error');
+
+            Log::warning("TelegramNotifierService: SendPhoto failed [{$statusCode}] {$description}", [
+                'chat_id' => $telegramUserId,
+            ]);
+
+            if ($this->isUnrecoverableError($statusCode, $description)) {
+                throw new TelegramUnrecoverableException(
+                    "Unrecoverable Telegram error: [{$statusCode}] {$description}"
+                );
+            }
+
+            return false;
+        } catch (TelegramUnrecoverableException $e) {
+            throw $e;
+        } catch (\Exception $e) {
+            Log::error('TelegramNotifierService: SendPhoto exception - '.$e->getMessage(), [
+                'chat_id' => $telegramUserId,
+            ]);
+
+            return false;
+        }
+    }
+
+    /**
      * Determine if the Telegram API error is unrecoverable (should NOT retry).
      */
     public function isUnrecoverableError(int $statusCode, string $description): bool

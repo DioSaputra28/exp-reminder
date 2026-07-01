@@ -30,6 +30,9 @@ class TrackedItemFactory extends Factory
             'remind_at' => null,
             'reminder_status' => ReminderStatus::Pending,
             'reminder_sent_at' => null,
+            'rack_name' => fake()->randomElement(['A', 'B', 'C', 'D']),
+            'shelf' => fake()->randomElement(['1', '2', '3']),
+            'sequence' => fake()->numberBetween(1, 20),
         ];
     }
 

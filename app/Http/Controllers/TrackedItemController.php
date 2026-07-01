@@ -61,6 +61,9 @@ class TrackedItemController extends Controller
             'product_id' => ['required', 'exists:products,id'],
             'expiry_date' => ['required', 'date', 'after_or_equal:today'],
             'quantity' => ['required', 'integer', 'min:1'],
+            'rack_name' => ['nullable', 'string', 'max:255'],
+            'shelf' => ['nullable', 'string', 'max:255'],
+            'sequence' => ['nullable', 'integer', 'min:1'],
             'remind_preset' => ['nullable', 'string'],
             'remind_at_custom' => ['nullable', 'date', 'after_or_equal:today'],
         ]);
@@ -86,7 +89,7 @@ class TrackedItemController extends Controller
         );
 
         // Validate remind_at is valid
-        if ($remindAt && ($remindAt->isPast() || $remindAt->gte(Carbon::parse($validated['expiry_date'])))) {
+        if ($remindAt && ($remindAt->isBefore(Carbon::today()) || $remindAt->gte(Carbon::parse($validated['expiry_date'])))) {
             return back()->withInput()
                 ->with('error', 'Tanggal reminder tidak valid. Harus sebelum tanggal expired dan belum lewat.');
         }
@@ -101,6 +104,9 @@ class TrackedItemController extends Controller
             'product_id' => $validated['product_id'],
             'expiry_date' => $validated['expiry_date'],
             'quantity' => $validated['quantity'],
+            'rack_name' => $validated['rack_name'] ?? null,
+            'shelf' => $validated['shelf'] ?? null,
+            'sequence' => $validated['sequence'] ?? null,
             'remind_at' => $remindAt,
             'reminder_status' => ReminderStatus::Pending,
         ]);
@@ -132,6 +138,9 @@ class TrackedItemController extends Controller
         $validated = $request->validate([
             'expiry_date' => ['required', 'date', 'after_or_equal:today'],
             'quantity' => ['required', 'integer', 'min:1'],
+            'rack_name' => ['nullable', 'string', 'max:255'],
+            'shelf' => ['nullable', 'string', 'max:255'],
+            'sequence' => ['nullable', 'integer', 'min:1'],
             'remind_preset' => ['nullable', 'string'],
             'remind_at_custom' => ['nullable', 'date', 'after_or_equal:today'],
         ]);
@@ -154,7 +163,7 @@ class TrackedItemController extends Controller
             Carbon::parse($validated['expiry_date'])
         );
 
-        if ($remindAt && ($remindAt->isPast() || $remindAt->gte(Carbon::parse($validated['expiry_date'])))) {
+        if ($remindAt && ($remindAt->isBefore(Carbon::today()) || $remindAt->gte(Carbon::parse($validated['expiry_date'])))) {
             return back()->withInput()
                 ->with('error', 'Tanggal reminder tidak valid. Harus sebelum tanggal expired dan belum lewat.');
         }
@@ -168,6 +177,9 @@ class TrackedItemController extends Controller
         $trackedItem->update([
             'expiry_date' => $validated['expiry_date'],
             'quantity' => $validated['quantity'],
+            'rack_name' => $validated['rack_name'] ?? null,
+            'shelf' => $validated['shelf'] ?? null,
+            'sequence' => $validated['sequence'] ?? null,
             'remind_at' => $remindAt,
             'reminder_status' => $reminderStatus,
             'reminder_sent_at' => $reminderStatus === ReminderStatus::Pending ? null : $trackedItem->reminder_sent_at,

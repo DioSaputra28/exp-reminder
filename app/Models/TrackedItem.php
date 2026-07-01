@@ -27,13 +27,11 @@ class TrackedItem extends Model
         'remind_at',
         'reminder_status',
         'reminder_sent_at',
+        'rack_name',
+        'shelf',
+        'sequence',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
     protected function casts(): array
     {
         return [
@@ -42,6 +40,7 @@ class TrackedItem extends Model
             'remind_at' => 'date',
             'reminder_status' => ReminderStatus::class,
             'reminder_sent_at' => 'datetime',
+            'sequence' => 'integer',
         ];
     }
 

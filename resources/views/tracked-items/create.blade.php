@@ -106,6 +106,55 @@
             </div>
         </div>
 
+        {{-- Location Fields --}}
+        <div class="grid grid-cols-3 gap-stack-md">
+            <div class="flex flex-col gap-stack-sm">
+                <label for="rack_name" class="text-label-lg text-on-surface-variant uppercase tracking-wider">Nama Rak</label>
+                <input
+                    type="text"
+                    id="rack_name"
+                    name="rack_name"
+                    value="{{ old('rack_name') }}"
+                    maxlength="255"
+                    class="w-full px-3 py-2.5 rounded-xl border border-border-subtle bg-surface-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-body-sm text-on-surface transition-all"
+                    placeholder="A"
+                />
+                @error('rack_name')
+                    <span class="text-label-md text-error">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="flex flex-col gap-stack-sm">
+                <label for="shelf" class="text-label-lg text-on-surface-variant uppercase tracking-wider">Shel</label>
+                <input
+                    type="text"
+                    id="shelf"
+                    name="shelf"
+                    value="{{ old('shelf') }}"
+                    maxlength="255"
+                    class="w-full px-3 py-2.5 rounded-xl border border-border-subtle bg-surface-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-body-sm text-on-surface transition-all"
+                    placeholder="1"
+                />
+                @error('shelf')
+                    <span class="text-label-md text-error">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="flex flex-col gap-stack-sm">
+                <label for="sequence" class="text-label-lg text-on-surface-variant uppercase tracking-wider">Urutan</label>
+                <input
+                    type="number"
+                    id="sequence"
+                    name="sequence"
+                    value="{{ old('sequence') }}"
+                    min="1"
+                    class="w-full px-3 py-2.5 rounded-xl border border-border-subtle bg-surface-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-body-sm text-on-surface transition-all"
+                    placeholder="1"
+                />
+                @error('sequence')
+                    <span class="text-label-md text-error">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+
         {{-- Reminder Preset --}}
         <div class="flex flex-col gap-stack-md">
             <label class="text-label-lg text-on-surface-variant uppercase tracking-wider">Ingatkan Sebelum</label>

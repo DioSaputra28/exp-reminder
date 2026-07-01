@@ -61,10 +61,33 @@ class SendTelegramNotificationJob implements ShouldQueue
         $daysLeft = now()->startOfDay()->diffInDays($trackedItem->expiry_date, false);
         $quantity = $trackedItem->quantity;
 
-        $message = $this->composeMessage($product->name, $trackedItem->expiry_date->format('d M Y'), $daysLeft, $quantity);
+        $location = collect([
+            $trackedItem->rack_name,
+            $trackedItem->shelf,
+            $trackedItem->sequence,
+        ])->filter()->implode(' · ');
+
+        $message = $this->composeMessage(
+            $product->name,
+            $trackedItem->expiry_date->format('d M Y'),
+            $daysLeft,
+            $quantity,
+            $location ?: null,
+        );
 
         try {
-            $success = $telegram->sendMessage($user->telegram_user_id, $message);
+            if ($product->image) {
+                $imageUrl = asset('storage/'.$product->image);
+                $photoSuccess = $telegram->sendPhoto($user->telegram_user_id, $imageUrl, $message);
+
+                if (! $photoSuccess) {
+                    $success = $telegram->sendMessage($user->telegram_user_id, $message);
+                } else {
+                    $success = true;
+                }
+            } else {
+                $success = $telegram->sendMessage($user->telegram_user_id, $message);
+            }
 
             if ($success) {
                 $trackedItem->update([
@@ -103,21 +126,24 @@ class SendTelegramNotificationJob implements ShouldQueue
     /**
      * Compose the notification message.
      */
-    private function composeMessage(string $productName, string $expiryDate, int $daysLeft, int $quantity = 1): string
+    private function composeMessage(string $productName, string $expiryDate, int $daysLeft, int $quantity = 1, ?string $location = null): string
     {
         $qtyText = $quantity > 1 ? " ({$quantity} pcs)" : '';
+        $locationText = $location ? "\nLokasi: {$location}" : '';
 
         if ($daysLeft <= 0) {
             return "⚠️ <b>Expired Alert!</b>\n\n"
                 ."Produk: <b>{$productName}</b>{$qtyText}\n"
-                ."Tanggal Expired: {$expiryDate}\n\n"
+                ."Tanggal Expired: {$expiryDate}"
+                ."{$locationText}\n\n"
                 .'⛔ Barang ini sudah melewati tanggal expired. Segera tarik dari rak!';
         }
 
         return "⚠️ <b>Reminder Expired</b>\n\n"
             ."Produk: <b>{$productName}</b>{$qtyText}\n"
             ."Tanggal Expired: {$expiryDate}\n"
-            ."Sisa Waktu: <b>{$daysLeft} hari lagi</b>\n\n"
+            ."Sisa Waktu: <b>{$daysLeft} hari lagi</b>"
+            ."{$locationText}\n\n"
             .'📋 Segera cek stok dan persiapkan penggantian.';
     }
 }
