@@ -45,9 +45,6 @@
         </p>
     </div>
 
-    {{-- Admin Link --}}
-    <a href="{{ route('admin.login') }}" class="text-label-lg text-outline hover:text-primary transition-colors">
-        Login sebagai Admin →
-    </a>
+
 </div>
 @endsection

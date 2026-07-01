@@ -71,7 +71,7 @@
                 </form>
 
                 {{-- Delete --}}
-                <form method="POST" action="{{ route('admin.categories.destroy', $category) }}" onsubmit="return confirm('Hapus kategori {{ $category->name }}? Produk dalam kategori ini akan tetap ada tanpa kategori.')">
+                <form method="POST" action="{{ route('admin.categories.destroy', $category) }}" data-confirm="Hapus kategori {{ $category->name }}?">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="text-error hover:bg-error-container p-2 rounded-full transition-colors" title="Hapus">

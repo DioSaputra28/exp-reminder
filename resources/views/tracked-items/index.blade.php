@@ -102,7 +102,7 @@
                 <div class="shrink-0 flex items-center gap-0.5">                    <a href="{{ route('tracked-items.edit', $item) }}" class="text-primary p-1.5 rounded-full hover:bg-black/5 transition-colors">
                         <x-heroicon-o-pencil class="w-4 h-4"/>
                     </a>
-                    <form method="POST" action="{{ route('tracked-items.destroy', $item) }}" onsubmit="return confirm('Hapus tracking ini?')">
+                    <form method="POST" action="{{ route('tracked-items.destroy', $item) }}" data-confirm="Hapus tracking ini?">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="text-error p-1.5 rounded-full hover:bg-black/5 transition-colors">

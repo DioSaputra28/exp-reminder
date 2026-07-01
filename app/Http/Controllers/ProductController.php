@@ -40,7 +40,8 @@ class ProductController extends Controller
                     : null;
                 $categoryName = $product->category?->name ?? '';
 
-                $html .= '<div class="bg-surface-white rounded-xl p-3 flex flex-col gap-stack-md shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-border-subtle">';
+                $route = route('tracked-items.create-for-product', $product);
+                $html .= '<div class="bg-surface-white rounded-xl p-3 flex flex-col gap-stack-md shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-border-subtle cursor-pointer hover:shadow-[0_4px_16px_rgba(0,0,0,0.08)] transition-all active:scale-[0.98]" data-route="'.e($route).'" data-name="'.e($product->name).'" onclick="openTrackingModal(this)">';
                 $html .= '<div class="w-full aspect-square rounded-lg bg-surface-container-low overflow-hidden flex items-center justify-center">';
                 if ($image) {
                     $html .= '<img class="w-full h-full object-cover" src="'.e($image).'" alt="'.e($product->name).'"/>';

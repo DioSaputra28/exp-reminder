@@ -83,11 +83,11 @@
                 @if($user->id !== auth()->id())
                     <div class="flex gap-stack-md pt-stack-sm border-t border-border-subtle">
                         {{-- Toggle Active --}}
-                        <form method="POST" action="{{ route('admin.users.toggle', $user) }}">
+                        <form method="POST" action="{{ route('admin.users.toggle', $user) }}" data-confirm="Nonaktifkan akun {{ $user->name }}?">
                             @csrf
                             @method('PUT')
                             @if($user->is_active)
-                                <button type="submit" class="px-3 py-1.5 bg-error-container text-on-error-container rounded-lg text-label-lg font-bold hover:opacity-90 transition-all active:scale-95" onclick="return confirm('Nonaktifkan akun {{ $user->name }}?')">
+                                <button type="submit" class="px-3 py-1.5 bg-error-container text-on-error-container rounded-lg text-label-lg font-bold hover:opacity-90 transition-all active:scale-95" data-confirm-text="Nonaktifkan">
                                     Nonaktifkan
                                 </button>
                             @else
@@ -103,12 +103,12 @@
                             @method('PUT')
                             @if($user->role === \App\Enums\UserRole::User)
                                 <input type="hidden" name="role" value="admin"/>
-                                <button type="submit" class="px-3 py-1.5 bg-primary-fixed text-on-primary-fixed rounded-lg text-label-lg font-bold hover:opacity-90 transition-all active:scale-95" onclick="return confirm('Jadikan {{ $user->name }} sebagai Admin?')">
+                                <button type="submit" data-confirm="Jadikan {{ $user->name }} sebagai Admin?" data-confirm-text="Promosikan" class="px-3 py-1.5 bg-primary-fixed text-on-primary-fixed rounded-lg text-label-lg font-bold hover:opacity-90 transition-all active:scale-95">
                                     → Admin
                                 </button>
                             @else
                                 <input type="hidden" name="role" value="user"/>
-                                <button type="submit" class="px-3 py-1.5 bg-surface-container text-on-surface-variant rounded-lg text-label-lg font-bold hover:opacity-90 transition-all active:scale-95" onclick="return confirm('Ubah {{ $user->name }} menjadi User?')">
+                                <button type="submit" data-confirm="Ubah {{ $user->name }} menjadi User?" data-confirm-text="Turunkan" class="px-3 py-1.5 bg-surface-container text-on-surface-variant rounded-lg text-label-lg font-bold hover:opacity-90 transition-all active:scale-95">
                                     → User
                                 </button>
                             @endif

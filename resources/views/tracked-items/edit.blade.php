@@ -186,7 +186,7 @@
     </form>
 
     {{-- Delete --}}
-    <form method="POST" action="{{ route('tracked-items.destroy', $trackedItem) }}" onsubmit="return confirm('Hapus tracking ini?')" class="flex justify-center">
+    <form method="POST" action="{{ route('tracked-items.destroy', $trackedItem) }}" data-confirm="Hapus tracking ini?" class="flex justify-center">
         @csrf
         @method('DELETE')
         <button type="submit" class="text-error text-body-sm font-semibold hover:underline">

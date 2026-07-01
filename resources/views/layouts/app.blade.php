@@ -91,6 +91,79 @@
     @else
     @endif
 
+    {{-- Confirmation Modal --}}
+    <div id="confirm-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closeConfirmModal()"></div>
+        <div class="relative bg-surface-white rounded-2xl shadow-[0_12px_48px_rgba(0,0,0,0.15)] p-6 max-w-sm w-full flex flex-col gap-stack-lg animate-fade-in">
+            <div class="flex flex-col gap-stack-sm text-center">
+                <div class="w-12 h-12 bg-error-container/30 rounded-full flex items-center justify-center mx-auto">
+                    <x-heroicon-o-exclamation-triangle class="w-6 h-6 text-error"/>
+                </div>
+                <h3 class="text-title-md font-semibold text-on-surface">Konfirmasi</h3>
+                <p id="confirm-modal-message" class="text-body-sm text-on-surface-variant"></p>
+            </div>
+            <div class="flex gap-stack-md">
+                <button type="button" onclick="closeConfirmModal()" class="flex-1 py-2.5 px-4 rounded-xl border border-border-subtle text-body-sm font-semibold text-on-surface-variant hover:bg-surface-container transition-all">
+                    Batal
+                </button>
+                <button id="confirm-modal-btn" type="button" class="flex-1 py-2.5 px-4 rounded-xl bg-error text-on-error text-body-sm font-semibold hover:opacity-90 transition-all active:scale-95 shadow-[0_4px_12px_rgba(198,40,40,0.2)]">
+                    Hapus
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    let pendingForm = null;
+
+    function showConfirmModal(message, confirmText) {
+        document.getElementById('confirm-modal-message').textContent = message;
+        if (confirmText) {
+            document.getElementById('confirm-modal-btn').textContent = confirmText;
+        }
+        document.getElementById('confirm-modal').classList.remove('hidden');
+    }
+
+    function closeConfirmModal() {
+        document.getElementById('confirm-modal').classList.add('hidden');
+        pendingForm = null;
+    }
+
+    document.addEventListener('click', function(e) {
+        const btn = e.target.closest('[data-confirm]');
+        if (!btn || btn.tagName !== 'BUTTON' && btn.tagName !== 'A') return;
+        if (btn.getAttribute('data-confirm') === 'false') return;
+
+        e.preventDefault();
+        pendingForm = btn.closest('form') || btn;
+        showConfirmModal(btn.getAttribute('data-confirm'), btn.getAttribute('data-confirm-text') || 'Konfirmasi');
+    });
+
+    document.addEventListener('submit', function(e) {
+        const form = e.target;
+        const message = form.getAttribute('data-confirm');
+        if (!message) return;
+
+        e.preventDefault();
+        pendingForm = form;
+        showConfirmModal(message, 'Hapus');
+    });
+
+    document.getElementById('confirm-modal-btn').addEventListener('click', function() {
+        closeConfirmModal();
+        if (!pendingForm) return;
+
+        if (pendingForm.tagName === 'FORM') {
+            pendingForm.removeAttribute('data-confirm');
+            const buttons = pendingForm.querySelectorAll('[data-confirm]');
+            buttons.forEach(b => b.setAttribute('data-confirm', 'false'));
+            pendingForm.requestSubmit();
+        } else if (pendingForm.href) {
+            window.location.href = pendingForm.href;
+        }
+    });
+    </script>
+
     @stack('scripts')
 </body>
 </html>

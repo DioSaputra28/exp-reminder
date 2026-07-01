@@ -79,7 +79,7 @@
                         <a href="{{ route('admin.products.edit', $product) }}" class="text-primary hover:bg-surface-container-low p-2 rounded-full transition-colors">
                             <x-heroicon-o-pencil class="w-5 h-5"/>
                         </a>
-                        <form method="POST" action="{{ route('admin.products.destroy', $product) }}" onsubmit="return confirm('Hapus produk {{ $product->name }}?')">
+                        <form method="POST" action="{{ route('admin.products.destroy', $product) }}" data-confirm="Hapus produk {{ $product->name }}?">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-error hover:bg-error-container p-2 rounded-full transition-colors">
