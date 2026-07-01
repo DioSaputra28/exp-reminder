@@ -23,7 +23,7 @@
 
         html5QrCode.start(
             { facingMode: 'environment' },
-            { fps: 10, qrbox: { width: 250, height: 120 } },
+            { fps: 10 },
             (decodedText) => {
                 // Fill the input
                 document.getElementById(fieldName).value = decodedText;

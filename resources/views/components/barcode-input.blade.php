@@ -27,7 +27,7 @@
     @enderror
 
     {{-- Inline Scanner Modal --}}
-    <div id="scanner-modal-{{ $name }}" class="hidden fixed inset-0 z-[100] bg-on-surface/80 flex items-center justify-center p-margin-mobile">
+    <div id="scanner-modal-{{ $name }}" class="hidden fixed inset-0 z-[100] bg-black/40 flex items-center justify-center p-margin-mobile">
         <div class="bg-surface-white rounded-2xl w-full max-w-sm overflow-hidden shadow-xl flex flex-col">
             <div class="flex items-center justify-between p-4 border-b border-border-subtle">
                 <h3 class="text-title-md font-semibold text-on-surface">Scan Barcode</h3>
@@ -35,7 +35,13 @@
                     <x-heroicon-o-x-mark class="w-5 h-5"/>
                 </button>
             </div>
-            <div id="scanner-region-{{ $name }}" class="w-full aspect-[4/3] bg-on-surface"></div>
+            <div id="scanner-region-{{ $name }}" class="w-full aspect-[4/3] bg-surface-container-low" style="position:relative;">
+                <style>
+                    #scanner-region-{{ $name }} video { width: 100% !important; height: 100% !important; object-fit: cover; }
+                    #scanner-region-{{ $name }} canvas { display: none !important; }
+                    #scanner-region-{{ $name }} img { display: none !important; }
+                </style>
+            </div>
             <div class="p-4">
                 <p id="scanner-status-{{ $name }}" class="text-body-sm text-on-surface-variant text-center">Arahkan kamera ke barcode...</p>
             </div>

@@ -7,6 +7,11 @@
 
 @push('styles')
     @vite('resources/js/scanner.js')
+    <style>
+        #scanner-region video { width: 100% !important; height: 100% !important; object-fit: cover; }
+        #scanner-region canvas { display: none !important; }
+        #scanner-region img { display: none !important; }
+    </style>
 @endpush
 
 @section('content')
@@ -14,9 +19,9 @@
     {{-- Scanner Container --}}
     <div class="bg-surface-white rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-border-subtle overflow-hidden">
         {{-- Camera Scanner --}}
-        <div class="w-full aspect-square bg-on-surface relative flex items-center justify-center max-h-[280px]">
+        <div class="w-full aspect-square bg-surface-container-low relative flex items-center justify-center max-h-[280px]">
             <div id="scanner-region" class="w-full h-full"></div>
-            <div id="scanner-loading" class="absolute inset-0 flex flex-col items-center justify-center gap-stack-md text-surface-white">
+            <div id="scanner-loading" class="absolute inset-0 flex flex-col items-center justify-center gap-stack-md text-on-surface-variant">
                 <x-heroicon-o-qr-code class="w-10 h-10 animate-pulse"/>
                 <p class="text-body-sm">Mengarahkan kamera...</p>
             </div>
@@ -179,7 +184,7 @@
                 const html5QrCode = new window.Html5Qrcode('scanner-region');
                 html5QrCode.start(
                     { facingMode: 'environment' },
-                    { fps: 10, qrbox: { width: 220, height: 120 } },
+                    { fps: 10 },
                     (decodedText) => {
                         if (!isProcessing) {
                             html5QrCode.pause(true);
@@ -203,8 +208,8 @@
 
         function showCameraError() {
             scannerLoading.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-surface-white"><path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M12 18.75H4.5a2.25 2.25 0 0 1-2.25-2.25V9m12.841 9.091L16.5 19.5m-1.409-1.409c.407-.407.659-.97.659-1.591v-9a2.25 2.25 0 0 0-2.25-2.25h-9c-.621 0-1.184.252-1.591.659m12.182 12.182L2.909 5.909M1.5 4.5l1.409 1.409" /></svg>
-                <p class="text-body-sm text-surface-white text-center px-4">Kamera tidak tersedia.<br>Gunakan pencarian di bawah.</p>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-on-surface-variant"><path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M12 18.75H4.5a2.25 2.25 0 0 1-2.25-2.25V9m12.841 9.091L16.5 19.5m-1.409-1.409c.407-.407.659-.97.659-1.591v-9a2.25 2.25 0 0 0-2.25-2.25h-9c-.621 0-1.184.252-1.591.659m12.182 12.182L2.909 5.909M1.5 4.5l1.409 1.409" /></svg>
+                <p class="text-body-sm text-on-surface-variant text-center px-4">Kamera tidak tersedia.<br>Gunakan pencarian di bawah.</p>
             `;
         }
     });
