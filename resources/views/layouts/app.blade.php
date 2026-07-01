@@ -150,16 +150,17 @@
     });
 
     document.getElementById('confirm-modal-btn').addEventListener('click', function() {
+        const form = pendingForm;
         closeConfirmModal();
-        if (!pendingForm) return;
+        if (!form) return;
 
-        if (pendingForm.tagName === 'FORM') {
-            pendingForm.removeAttribute('data-confirm');
-            const buttons = pendingForm.querySelectorAll('[data-confirm]');
+        if (form.tagName === 'FORM') {
+            form.removeAttribute('data-confirm');
+            const buttons = form.querySelectorAll('[data-confirm]');
             buttons.forEach(b => b.setAttribute('data-confirm', 'false'));
-            pendingForm.requestSubmit();
-        } else if (pendingForm.href) {
-            window.location.href = pendingForm.href;
+            form.requestSubmit();
+        } else if (form.href) {
+            window.location.href = form.href;
         }
     });
     </script>
